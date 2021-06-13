@@ -1,0 +1,20 @@
+---
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Installing Postfix
+      apt:
+        update_cache: true
+        name: postfix
+        state: present
+      tags:
+        - "init postfix"
+
+    - name: Removing Postfix
+      apt:
+        update_cache: true
+        name: postfix
+        state: absent
+      tags:
+        - "drop postfix"
